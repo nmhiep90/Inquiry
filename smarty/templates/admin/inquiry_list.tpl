@@ -5,32 +5,61 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-</head>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<style>
+    .container{
+        margin:50px auto; 
+        width: auto;
+        height: auto;
+    }
+    h1{
+        text-align: center;
+    }
+/*
+    .search-title{
+        float: left;
+    }
+*/
+    .form-container{
+        width: 500px;
+        height: auto;
+    }
+    </style>
+    </head>
 
 <body>
+    <h1>問い合わせ一覧</h1>
 <div class="container">
 
-<h1>問い合わせ一覧</h1>
-{* $inquiry_list|var_dump *}
 
-<h2>検索</h2>
+{* $inquiry_list|var_dump *}
+<div class="form-container">
+<h4>検索内容をフォームに入力してください</h4>
+    
 <form action="./inquiry_list.php" method="GET">
 <input type="hidden" name="sort" value="{$sort}">
-name(あいまい)<input name="name" value="{$find_string.name}"><br>
-email<input name="email" value="{$find_string.email}"><br>
-誕生日<input name="birthday_from" value="{$find_string.birthday_from}">
-      ～<input name="birthday_to" value="{$find_string.birthday_to}"><br>
-<button>検索</button>
+    <label>Name(あいまい)</label><input class="form-control" name="name" value="{$find_string.name}"><br>
+    <label>Email</label><input class="form-control" name="email" value="{$find_string.email}"><br>
+    <label>誕生日</label><input class="form-control" name="birthday_from" value="{$find_string.birthday_from}">
+      ～<input class="form-control" name="birthday_to" value="{$find_string.birthday_to}"><br>
+<button class="btn btn-primary">検索</button>
 </form>
+    </div>
 
-<h2>一覧</h2>
+<h3>お問い合わせ一覧</h3>
+    <hr>
 {if $back_page_flg == true}
-  <a href="./inquiry_list.php?sort={$sort}&{$uri_params|unescape}&p={$back_page}" class="btn btn-nomal"> back </a>
+  <a href="./inquiry_list.php?sort={$sort}&{$uri_params|unescape}&p={$back_page}" class="btn btn-primary"> Back </a>
 {else}
   　　　　
 {/if}
 {if $next_page_flg == true}
-  <a href="./inquiry_list.php?sort={$sort}&{$uri_params|unescape}&p={$next_page}" class="btn btn-nomal"> next </a><br>
+  <a href="./inquiry_list.php?sort={$sort}&{$uri_params|unescape}&p={$next_page}" class="btn btn-primary"> Next </a><br>
 {else}
   　　　　
 {/if}

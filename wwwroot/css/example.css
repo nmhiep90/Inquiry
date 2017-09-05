@@ -1,1 +1,5 @@
-
+#form{
+    border: 2px;
+    border-style: dashed;
+    margin: 0 auto;
+};
